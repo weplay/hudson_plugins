@@ -1,0 +1,146 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.jvnet.hudson.plugins</groupId>
+	<artifactId>result-dependent-shell-script</artifactId>
+	<packaging>hpi</packaging>
+	<name>Hudson Result-dependent shell script</name>
+	<version>1.6</version>
+	<dependencyManagement>
+		<dependencies>
+		</dependencies>
+	</dependencyManagement>
+
+	<properties>
+		<!-- which version of Hudson is this plugin built against? -->
+		<hudson.version>1.300</hudson.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jvnet.hudson.main</groupId>
+			<artifactId>hudson-core</artifactId>
+			<version>${hudson.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.hudson.main</groupId>
+			<artifactId>hudson-war</artifactId>
+			<type>war</type>
+			<version>${hudson.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<description>This plugin allows the user to execute a shell/batch task depending on the result of the build.</description>
+	<url>http://wiki.hudson-ci.org/display/HUDSON/Result-dependent+shell+script</url>
+	<parent>
+		<artifactId>plugin</artifactId>
+		<groupId>org.jvnet.hudson.plugins</groupId>
+		<version>1.318</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<developers>
+		<developer>
+			<id>lukemelia</id>
+			<name>Luke Melia</name>
+			<email>luke@lukemelia.com</email>
+			<organization>Weplay</organization>
+			<organizationUrl>http://www.weplay.com/</organizationUrl>
+			<timezone>+5.30</timezone>
+			<roles>
+				<role>Software Engineer</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+	</contributors>
+	<scm>
+	  <!-- <connection>scm:svn:https://guest@svn.dev.java.net/svn/hudson/tags/TBD</connection>
+	      <developerConnection>scm:svn:https://svn.dev.java.net/svn/hudson/tags/TBD</developerConnection> -->
+	      <url>https://hudson.dev.java.net/source/browse/hudson/hudson/plugins/TBD/tags/TBD</url>
+  </scm>
+	<organization>
+		<name>Weplay, Inc.</name>
+		<url>http://www.weplay.com</url>
+	</organization>
+
+	<build>
+		<!--
+			Since new versions need to overwrite old versions, it's better not to
+			have version number in the .hpi file name.
+		-->
+		<finalName>${project.artifactId}</finalName>
+		<defaultGoal>package</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.jvnet.hudson.tools</groupId>
+				<artifactId>maven-hpi-plugin</artifactId>
+				<version>1.40</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+		<extensions>
+		</extensions>
+	</build>
+	<profiles>
+	</profiles>
+
+	<!--
+		Get everything from http://maven.glassfish.org/content/groups/public/
+		, which aggregates everything we need, including central.
+	-->
+	<repositories>
+		<repository>
+			<id>central</id>
+			<url>http://repo1.maven.org/maven2</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>m.g.o-public</id>
+			<url>http://maven.glassfish.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<url>http://repo1.maven.org/maven2</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>m.g.o-public</id>
+			<url>http://maven.glassfish.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
